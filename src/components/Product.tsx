@@ -1,6 +1,7 @@
 import { ProductType } from "../context/ProductsProvider";
 import { ReducerActionType, ReducerAction } from "../context/CartProvider";
 import { ReactElement } from "react";
+import { Link } from "react-router-dom";
 
 type PropsType = {
   product: ProductType;
@@ -29,7 +30,7 @@ const Product = ({
      syntax creates a new object based on the product object
       but with an additional property qty set to 1. This
        represents the product being added to the cart with a quantity of 1.*/
-    updatedCart.push({ ...product, qty: 1 });
+    updatedCart.push({ ...product, qty: 1, id: product.id });
     localStorage.setItem("product", JSON.stringify(updatedCart));
   };
 
@@ -47,6 +48,9 @@ const Product = ({
         {itemInCart}
       </p>
       <button onClick={onAddToCart}>Add to Cart</button>
+      <Link to={"/products/{product.id}"}>
+      <button>Product Details</button>
+      </Link>
     </article>
   );
 

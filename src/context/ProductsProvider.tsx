@@ -1,6 +1,7 @@
 import  { createContext, ReactElement, useState, useEffect } from "react";
 
 export type ProductType = {
+  id: number;
   sku: string;
   name: string;
   price: number;
@@ -13,16 +14,19 @@ const initState: ProductType[] = [
     sku: "item0001",
     name: "Product 1 description",
     price: 100,
+    id: 1,
   },
   {
     sku: "item0002",
     name: "Product 2 description",
     price: 200,
+    id: 2,
   },
   {
     sku: "item0003",
     name: "Product 3 description",
     price: 300,
+    id: 3,
   },  
 ];
 
@@ -52,9 +56,7 @@ export const ProductsProvider = ({ children }: childrenType):
         //     fetchProducts().then(products => setProducts(products))
         // }, [])
 
-
-
-
+        
         return (
             <ProductsContext.Provider value={{ products }}>
                 {children}
