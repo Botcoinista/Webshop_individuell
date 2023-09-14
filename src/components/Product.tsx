@@ -41,9 +41,9 @@ const Product = ({
   const content = (
     <article className="product">
       <h3>{product.name}</h3>
-      {/* <Link to={`products/`}> */}
+      <Link to={`/product/${product.id}`}>
       <img src={img} alt={product.name} className="product__img" />
-      {/* </Link> */}
+      </Link>
       <p>
         {new Intl.NumberFormat("sv-SE", {
           style: "currency",

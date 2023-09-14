@@ -30,7 +30,7 @@ const ProductDetails = (): React.ReactElement => {
       <div>
         <h1>Product Details</h1>
         <h2>{productData.name}</h2>
-        <p>{productData.description}</p>
+        <p>En huvtröja i bomullsblandad sweatshirtkvalitet. Tröjan har lös passform, fodrad huva, <br/> känguruficka och lång ärm. Ribbad mudd vid ärmslut och i nederkant. Mjuk, borstad insida.</p>
         <img src={img} alt={productData.name} className="product__img" />
         <p>Price: {productData.price}</p>
       </div>
