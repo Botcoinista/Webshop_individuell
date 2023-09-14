@@ -1,7 +1,8 @@
-import { ProductType } from "../context/ProductsProvider";
-import { ReducerActionType, ReducerAction } from "../context/CartProvider";
+import { ProductType } from "../../context/ProductsProvider";
+import { ReducerActionType, ReducerAction } from "../../context/CartProvider";
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
+import "./Product.css";
 
 type PropsType = {
   product: ProductType;
@@ -16,7 +17,7 @@ const Product = ({
   REDUCER_ACTIONS,
   inCart,
 }: PropsType): ReactElement => {
-  const img: string = new URL(`../images/${product.sku}.jpg`, import.meta.url)
+  const img: string = new URL(`../../images/${product.sku}.jpg`, import.meta.url)
     .href;
   // console.log(img);
 
@@ -51,10 +52,12 @@ const Product = ({
         {itemInCart}
       </p>
       <Link to={`/products/`}>
-        <button onClick={onAddToCart}>Add to Cart</button>
+        <button className="addToCart-btn" onClick={onAddToCart}>
+          Add to Cart
+        </button>
       </Link>
       <Link to={`/product/${product.id}`}>
-        <button>Product Details</button>
+        <button className="productDetails-btn">Product Details</button>
       </Link>
     </article>
   );
