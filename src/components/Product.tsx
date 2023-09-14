@@ -32,8 +32,7 @@ const Product = ({
        represents the product being added to the cart with a quantity of 1.*/
     updatedCart.push({ ...product, qty: 1, id: product.id });
     localStorage.setItem("product", JSON.stringify(updatedCart));
-     // Construct the product details URL
-
+    // Construct the product details URL
   };
 
   const itemInCart = inCart ? " ➡️ Item in Cart: ✅" : null;
@@ -42,7 +41,7 @@ const Product = ({
     <article className="product">
       <h3>{product.name}</h3>
       <Link to={`/product/${product.id}`}>
-      <img src={img} alt={product.name} className="product__img" />
+        <img src={img} alt={product.name} className="product__img" />
       </Link>
       <p>
         {new Intl.NumberFormat("sv-SE", {
@@ -52,7 +51,7 @@ const Product = ({
         {itemInCart}
       </p>
       <Link to={`/products/`}>
-      <button onClick={onAddToCart}>Add to Cart</button>
+        <button onClick={onAddToCart}>Add to Cart</button>
       </Link>
       <Link to={`/product/${product.id}`}>
         <button>Product Details</button>

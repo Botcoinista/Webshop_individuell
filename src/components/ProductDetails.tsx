@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductLocalStorageType } from "../context/ProductsProvider"; // Make sure to import ProductLocalStorageType
 
@@ -23,21 +24,25 @@ const ProductDetails = (): React.ReactElement => {
     if (!productData) {
       return <div>Product not found</div>;
     }
-    
-    const img: string = new URL(`../images/${productData.sku}.jpg`, import.meta.url)
-    .href;
 
-    
+    const img: string = new URL(
+      `../images/${productData.sku}.jpg`,
+      import.meta.url
+    ).href;
 
     return (
       <div>
         <h1>Product Details</h1>
         <h2>{productData.name}</h2>
-        <p>En huvtröja i bomullsblandad sweatshirtkvalitet. Tröjan har lös passform, fodrad huva, <br/> känguruficka och lång ärm. Ribbad mudd vid ärmslut och i nederkant. Mjuk, borstad insida.</p>
-        <img src={img} alt={productData.name} 
-        className="product__img" />
-        <Link to={`/products`}>
-        <button>Back to Products</button>
+        <p>
+          En huvtröja i bomullsblandad SWEatshirtkvalitet. Tröjan har lös
+          passform, fodrad huva, <br /> känguruficka och lång ärm. Ribbad mudd
+          vid ärmslut och i nederkant. Mjuk, borstad insida.
+        </p>
+        <img src={img} alt={productData.name} className="product__img" />
+        {/* <button onClick={() => setViewCart(!viewCart)}>Toggle Cart</button> */}
+        <Link to={`/`}>
+          <button>Back to Products</button>
         </Link>
         <p>Price: {productData.price}</p>
       </div>

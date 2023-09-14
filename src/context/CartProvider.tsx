@@ -11,7 +11,6 @@ export type CartItemType = {
   qty: number;
 };
 
-
 // Define the initial state for the shopping cart
 type CartStateType = { cart: CartItemType[] };
 const initCartState: CartStateType = { cart: [] };
@@ -25,8 +24,6 @@ const REDUCER_ACTION_TYPE = {
   // SET_CART: "SET_CART",
 };
 
-
-
 export type ReducerAction = {
   type: string;
   payload: CartItemType;
@@ -35,15 +32,16 @@ export type ReducerAction = {
 // Define the cart reducer function
 const reducer = (
   state: CartStateType,
-  action: ReducerAction): CartStateType => {
+  action: ReducerAction
+): CartStateType => {
   switch (action.type) {
     case REDUCER_ACTION_TYPE.ADD: {
       if (!action.payload) {
         throw new Error("action.payload missing in ADD action");
       }
-      // Extract SKU, name, and price from payload so you dont have to write action.payload.sku, etc. 
+      // Extract SKU, name, and price from payload so you dont have to write action.payload.sku, etc.
       const { sku, name, price } = action.payload;
-      // Create a new array by filtering out previous occurrences of the same item in the cart 
+      // Create a new array by filtering out previous occurrences of the same item in the cart
       const filteredCart: CartItemType[] = state.cart.filter(
         (item) => item.sku !== sku
       );
@@ -120,7 +118,7 @@ const useCartContext = (initCartState: CartStateType) => {
 
   const totalPrice = new Intl.NumberFormat("sv-SE", {
     style: "currency",
-    currency: "SEK",
+    currency: "SWE",
   }).format(
     state.cart.reduce((previousValue, cartItem) => {
       return previousValue + cartItem.qty * cartItem.price;

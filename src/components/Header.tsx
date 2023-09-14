@@ -1,5 +1,4 @@
-// import Nav from "./Nav";
-import useCart from "../hooks/useCart";
+  import useCart from "../hooks/useCart";
 
 type PropsType = {
   viewCart: boolean;
@@ -18,7 +17,7 @@ const Header = ({ viewCart, setViewCart }: PropsType) => {
   const content = (
     <header className="header">
       <div className="header__title-bar">
-        <h1>Acme Co.</h1>
+        <h1>H&M</h1>
         <div className="header_price-box">
           <p>Total Items: {totalItems}</p>
           <p>Total Price: {totalPrice}</p>

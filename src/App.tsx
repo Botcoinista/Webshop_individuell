@@ -9,14 +9,19 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 const App = () => {
   const [viewCart, setViewCart] = useState<boolean>(false);
 
-  const pageContent = viewCart ? <Cart /> : <ProductList />;
-
   return (
     <Router>
       <Header viewCart={viewCart} setViewCart={setViewCart} />
       <Routes>
-        <Route path="/products" element={pageContent} />
-        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/" element={viewCart ? <Cart /> : <ProductList />} />
+        <Route
+          path="/products"
+          element={viewCart ? <Cart /> : <ProductList />}
+          />
+        <Route
+          path="/product/:id"
+          element={viewCart ? <Cart /> : <ProductDetails />}
+        />
       </Routes>
       <Footer viewCart={viewCart} />
     </Router>
