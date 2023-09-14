@@ -11,6 +11,7 @@ export type CartItemType = {
   qty: number;
 };
 
+
 // Define the initial state for the shopping cart
 type CartStateType = { cart: CartItemType[] };
 const initCartState: CartStateType = { cart: [] };
@@ -24,7 +25,7 @@ const REDUCER_ACTION_TYPE = {
   // SET_CART: "SET_CART",
 };
 
-export type ReducerActionType = typeof REDUCER_ACTION_TYPE;
+
 
 export type ReducerAction = {
   type: string;
@@ -34,8 +35,7 @@ export type ReducerAction = {
 // Define the cart reducer function
 const reducer = (
   state: CartStateType,
-  action: ReducerAction
-): CartStateType => {
+  action: ReducerAction): CartStateType => {
   switch (action.type) {
     case REDUCER_ACTION_TYPE.ADD: {
       if (!action.payload) {
@@ -161,4 +161,4 @@ export const CartProvider = ({ children }: ChildrenType): ReactElement => {
   );
 };
 
-export default CartContext; // Export the CartContext
+export default CartContext;

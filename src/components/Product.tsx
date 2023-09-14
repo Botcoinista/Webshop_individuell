@@ -48,7 +48,7 @@ const Product = ({
         {itemInCart}
       </p>
       <button onClick={onAddToCart}>Add to Cart</button>
-      <Link to={"/products/{product.id}"}>
+      <Link to={`/products/{product.id}`}>
       <button>Product Details</button>
       </Link>
     </article>
