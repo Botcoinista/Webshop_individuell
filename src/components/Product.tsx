@@ -18,7 +18,7 @@ const Product = ({
 }: PropsType): ReactElement => {
   const img: string = new URL(`../images/${product.sku}.jpg`, import.meta.url)
     .href;
-  console.log(img);
+  // console.log(img);
 
   const onAddToCart = () => {
     // Dispatch the ADD action to add the product to the cart
@@ -32,6 +32,8 @@ const Product = ({
        represents the product being added to the cart with a quantity of 1.*/
     updatedCart.push({ ...product, qty: 1, id: product.id });
     localStorage.setItem("product", JSON.stringify(updatedCart));
+     // Construct the product details URL
+
   };
 
   const itemInCart = inCart ? " ➡️ Item in Cart: ✅" : null;
@@ -39,7 +41,9 @@ const Product = ({
   const content = (
     <article className="product">
       <h3>{product.name}</h3>
+      {/* <Link to={`products/`}> */}
       <img src={img} alt={product.name} className="product__img" />
+      {/* </Link> */}
       <p>
         {new Intl.NumberFormat("sv-SE", {
           style: "currency",
@@ -47,9 +51,11 @@ const Product = ({
         }).format(product.price)}
         {itemInCart}
       </p>
+      <Link to={`/products/`}>
       <button onClick={onAddToCart}>Add to Cart</button>
-      <Link to={`/products/{product.id}`}>
-      <button>Product Details</button>
+      </Link>
+      <Link to={`/product/${product.id}`}>
+        <button>Product Details</button>
       </Link>
     </article>
   );

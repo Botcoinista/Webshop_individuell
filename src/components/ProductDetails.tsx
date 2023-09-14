@@ -22,14 +22,17 @@ const ProductDetails = (): React.ReactElement => {
     if (!productData) {
       return <div>Product not found</div>;
     }
+    
+    const img: string = new URL(`../images/${productData.sku}.jpg`, import.meta.url)
+    .href;
 
     return (
       <div>
         <h1>Product Details</h1>
         <h2>{productData.name}</h2>
         <p>{productData.description}</p>
+        <img src={img} alt={productData.name} className="product__img" />
         <p>Price: {productData.price}</p>
-        {/* Display other product details as needed */}
       </div>
     );
   }

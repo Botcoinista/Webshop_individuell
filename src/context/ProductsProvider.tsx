@@ -5,6 +5,7 @@ export type ProductType = {
   sku: string;
   name: string;
   price: number;
+  img: string;
 };
 
 export interface ProductLocalStorageType extends ProductType {
@@ -19,18 +20,21 @@ const initState: ProductType[] = [
     name: "Product 1 description",
     price: 100,
     id: 1,
+    img: "",
   },
   {
     sku: "item0002",
     name: "Product 2 description",
     price: 200,
     id: 2,
+    img: "",
   },
   {
     sku: "item0003",
     name: "Product 3 description",
     price: 300,
     id: 3,
+    img: "",
   },
 ];
 
