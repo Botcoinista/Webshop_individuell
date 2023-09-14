@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ProductLocalStorageType } from "../context/ProductsProvider"; // Make sure to import ProductLocalStorageType
 
 interface RouteProps {
@@ -26,12 +27,18 @@ const ProductDetails = (): React.ReactElement => {
     const img: string = new URL(`../images/${productData.sku}.jpg`, import.meta.url)
     .href;
 
+    
+
     return (
       <div>
         <h1>Product Details</h1>
         <h2>{productData.name}</h2>
         <p>En huvtröja i bomullsblandad sweatshirtkvalitet. Tröjan har lös passform, fodrad huva, <br/> känguruficka och lång ärm. Ribbad mudd vid ärmslut och i nederkant. Mjuk, borstad insida.</p>
-        <img src={img} alt={productData.name} className="product__img" />
+        <img src={img} alt={productData.name} 
+        className="product__img" />
+        <Link to={`/products`}>
+        <button>Back to Products</button>
+        </Link>
         <p>Price: {productData.price}</p>
       </div>
     );
