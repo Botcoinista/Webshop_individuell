@@ -1,16 +1,14 @@
 import { ChangeEvent, ReactElement, memo } from "react";
 import { CartItemType } from "../context/CartProvider";
-import { ReducerAction } from "../context/CartProvider";
-import { ReducerActionType } from "../context/CartProvider";
+import useCart from "../hooks/useCart";
 
 type PropsType = {
   item: CartItemType;
-  dispatch: React.Dispatch<ReducerAction>;
-  REDUCER_ACTIONS: ReducerActionType;
 };
 
-const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
-  const img: string = new URL(`../images/${item.sku}.jpg`, import.meta.url)
+const CartLineItem = ({ item }: PropsType) => {
+  const cart = useCart();
+  const img: string = new URL(`../images/${item.instock}.jpg`, import.meta.url)
     .href;
 
   const lineTotal: number = item.price * item.qty;
@@ -30,15 +28,15 @@ const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
   });
 
   const onChangeQty = (e: ChangeEvent<HTMLSelectElement>) => {
-    dispatch({
-      type: REDUCER_ACTIONS.QUANTITY,
+    cart.dispatch({
+      type: cart.REDUCER_ACTIONS.QUANTITY,
       payload: { ...item, qty: Number(e.target.value) },
     });
   };
 
   const onRemoveFromCart = () =>
-    dispatch({
-      type: REDUCER_ACTIONS.REMOVE,
+    cart.dispatch({
+      type: cart.REDUCER_ACTIONS.REMOVE,
       payload: item,
     });
 
@@ -75,7 +73,7 @@ const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
       </div>
 
       <button
-        className="cart_button"
+        className="cart__button"
         aria-label="Remove Item From Cart"
         title="Remove Item From Cart"
         onClick={onRemoveFromCart}

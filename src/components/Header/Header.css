@@ -1,0 +1,10 @@
+.viewCart-btn {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 1rem;
+    padding: .5rem 1rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #ffe606;
+    cursor: pointer;
+}

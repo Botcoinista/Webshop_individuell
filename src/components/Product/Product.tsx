@@ -1,38 +1,29 @@
 import { ProductType } from "../../context/ProductsProvider";
-import { ReducerActionType, ReducerAction } from "../../context/CartProvider";
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import "./Product.css";
+import useCart from "../../hooks/useCart";
 
 type PropsType = {
   product: ProductType;
-  dispatch: React.Dispatch<ReducerAction>;
-  REDUCER_ACTIONS: ReducerActionType;
   inCart: boolean;
 };
 
-const Product = ({
-  product,
-  dispatch,
-  REDUCER_ACTIONS,
-  inCart,
-}: PropsType): ReactElement => {
-  const img: string = new URL(`../../images/${product.sku}.jpg`, import.meta.url)
-    .href;
+const Product = ({ product, inCart }: PropsType): ReactElement => {
+  const cart = useCart();
+  const img: string = new URL(
+    `../../images/${product.instock}.jpg`,
+    import.meta.url
+  ).href;
   // console.log(img);
-
   const onAddToCart = () => {
     // Dispatch the ADD action to add the product to the cart
-    dispatch({ type: REDUCER_ACTIONS.ADD, payload: { ...product, qty: 1 } });
-
+    cart.dispatch({
+      type: cart.REDUCER_ACTIONS.ADD,
+      payload: { ...product, qty: 1 },
+    });
     // Save the updated cart data to localStorage
-    const updatedCart = JSON.parse(localStorage.getItem("product") || "[]");
-    /*The { ...product, qty: 1 } 
-     syntax creates a new object based on the product object
-      but with an additional property qty set to 1. This
-       represents the product being added to the cart with a quantity of 1.*/
-    updatedCart.push({ ...product, qty: 1, id: product.id });
-    localStorage.setItem("product", JSON.stringify(updatedCart));
+
     // Construct the product details URL
   };
 
